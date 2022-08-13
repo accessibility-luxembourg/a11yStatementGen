@@ -1,6 +1,6 @@
 # a11yStatementGen
 
-**a11yStatementGen** is an accessibility statement generator which has been developed to generate accessibility statements in Luxembourg. It is able to generate an accessibility statement in four languages: luxembourgish, french, german and english. One instance of this software is usually deployed at this address:
+**a11yStatementGen** is an accessibility statement generator which has been developed to help public sector organisations in generating accessibility statements in Luxembourg. It is able to generate an accessibility statement in four languages: luxembourgish, french, german and english. One instance of this software is usually deployed at this address:
 https://accessibilite.public.lu/fr/tools/decla.html
 
 
