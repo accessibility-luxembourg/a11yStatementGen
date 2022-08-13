@@ -1,5 +1,7 @@
 node_modules
-dist
+dist/*
+!dist/.keep
 .cache
-src/html
+src/html/fr/*
+!src/html/fr/.keep
 .DS_Store
