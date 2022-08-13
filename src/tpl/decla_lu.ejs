@@ -1,0 +1,245 @@
+<div lang="lb">
+    <% if (main_title) { %>
+    <h<%= title_level %>>Accessibilitéitserklärung</h<%= title_level %>>
+    <% } %>
+    <p>
+        D'Organ <span class="basic-information organization-name">"<%= name_lu %>"</span> verflicht sech dozou 
+        <% if (sites.length != 0 ) { %>
+            <% if (sites.length == 1) { %>
+                säin Internetsite
+            <% } else { %>    
+                seng Internetsitten
+            <% } %>
+        <% } %>
+        <% if (sites.length != 0 && apps.length !=0) { %>
+            a
+        <% } %>
+        <% if (apps.length != 0 ) { %>
+            <% if (apps.length == 1) { %>
+                seng mobil Applikatioun
+            <% } else { %>    
+                seng mobil Applikatiounen
+            <% } %>
+        <% } %>
+        accessibel ze maachen, konform zum <a href="http://legilux.public.lu/eli/etat/leg/loi/2019/05/28/a373/jo" hreflang="fr">Gesetz vum 28. Mee 2019</a> iwwert d’Accessibilitéit vu Websäiten a mobillen Appe vun Organer aus dem ëffentleche Secteur.    
+        Dës Accessibilitéitserklärung betrëfft:
+        <% if (sites.concat(apps).length == 1) { %>
+            <span class="basic-information website-name"><a href="<%= sites.concat(apps)[0] %>"><%= sites.concat(apps)[0] %></a></span></p>
+        <% } else { %>
+        </p><ul>
+            <% sites.concat(apps).forEach(function(e) { %>
+                <li class="basic-information website-name"><a href="<%= e %>"><%= e %></a></li>
+            <% }) %>
+        </ul>
+        <% } %>
+    <h<%= title_level+1 %>>Wat ass d'digital Accessibilitéit?</h<%= title_level+1 %>>
+    <p>Jidderee muss déi op enger Websäit oder Applikatioun ugewisen Informatiounen einfach ofruffe kënnen, besonnesch Persoune mat enger Behënnerung an/oder déi eng Assistenz-Software oder spezialiséiert Material (blann Persounen, Persounen mat enger Behënnerung un den Aen oder engem aneren Handicap) benotzen.
+    </p>
+    <h<%= title_level+1 %>>Konformitéitsstatut</h<%= title_level+1 %>>
+    <p class="basic-information conformance-status <%= conformity %>">
+        <% if (sites.length == 0) { %>
+            <% if (apps.length == 0) { %> 
+                -       
+            <% } else if (apps.length == 1) { %>
+                Dës mobil Applikatioun
+            <% } else { %>
+                Dës mobil Applikatiounen
+            <% } %>    
+        <% } else if (sites.length == 1) { %>
+            <% if (apps.length == 0) { %>
+                Dësen Internetsite 
+            <% } else if (apps.length == 1) { %> 
+                Dësen Internetsite an dës mobil Applikatioun           
+            <% } else { %>
+                Dës Internetsitten an dës mobil Applikatiounen
+            <% } %>     
+        <% } else { %>
+            <% if (apps.length == 0) { %>
+                Dës Internetsitten
+            <% } else if (apps.length == 1) { %> 
+                Dës Internetsitten an dës mobil Applikatioun           
+            <% } else { %>
+                Dës Internetsitten a mobil Applikatiounen
+            <% } %>  
+        <% } %>
+    
+        <% if (conformity != 'none') { %>
+            <% if (sites.length + apps.length <= 1) { %>
+                ass
+            <% } else { %>
+                sinn
+            <% } %>
+        <% } else { %>
+            <% if (sites.length + apps.length <= 1) { %>
+                ass net
+            <% } else { %>
+                sinn net
+            <% } %>
+        <% } %>
+        <% if (conformity == 'total') { %>
+            <strong>vollstänneg konform</strong> mat der europäescher Norm <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf" hreflang="en">EN 301 549</a><% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> an <% } %>
+            <% if (sites.length != 0 ) { %>
+               dem <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA v4.1</a>
+            <% } %>
+            <% if (sites.length != 0 && apps.length !=0) { %>
+                an
+            <% } %>
+            <% if (apps.length != 0 ) { %>
+               dem <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">RAAM v1</a>
+            <% } %>.
+        <% } else if (conformity == 'partial') { %>
+            <strong>partiell konform</strong> mat der europäescher Norm <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf" hreflang="en">EN 301 549</a><% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> an <% } %>
+            <% if (sites.length != 0 ) { %>
+               dem <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA v4.1</a>
+            <% } %>
+            <% if (sites.length != 0 && apps.length !=0) { %>
+                an
+            <% } %>
+            <% if (apps.length != 0 ) { %>
+               dem <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">RAAM v1</a>
+            <% } %>.
+        <% } else { %>
+            <strong>net konform</strong> mat der europäescher Norm <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf" hreflang="en">EN 301 549</a><% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> an <% } %>
+            <% if (sites.length != 0 ) { %>
+               dem <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA v4.1</a>
+            <% } %>
+            <% if (sites.length != 0 && apps.length !=0) { %>
+                an
+            <% } %>
+            <% if (apps.length != 0 ) { %>
+               dem <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">RAAM v1</a>
+            <% } %>.
+            D'Grënn dofir sinn heirënner opgelëscht.
+        <% } %>
+    
+    </p>
+    <% if (nc_lu.length !== 0 || cd_lu.length !== 0 || ce_lu.length !== 0) { %>
+    <h<%= title_level+1 %>>Net-accessibele Contenu</h<%= title_level+1 %>>
+    <p>De folgende Contenu ass net accessibel aus folgende Grënn:</p>
+    <% } %>
+    <% if (nc_lu.length !== 0) {  %>
+        <h<%= title_level+2 %>>Net konform</a></h<%= title_level+2 %>>
+        <% if (nc_lu.length == 1) { %>
+            <p class="technical-information accessibility-limitations non-compliant"><%= nc_lu[0] %></p>
+        <% } else { %>
+            <ul><% nc_lu.forEach(function(e){ %>
+                <li class="technical-information accessibility-limitations non-compliant"><%= e %></li>
+            <% }) %>
+            </ul>
+        <% } %>
+    <% } %>
+    <% if (cd_lu.length !== 0) { %>
+        <h<%= title_level+2 %>>Onverhältnesméisseg Belaaschtung</h<%= title_level+2 %>>
+        <% if (cd_lu.length == 1) { %>
+            <p class="technical-information accessibility-limitations disproportionate-burden"><%= cd_lu[0] %></p>
+        <% } else { %>
+            <ul><% cd_lu.forEach(function(e){ %>
+                <li class="technical-information accessibility-limitations disproportionate-burden"><%= e %></li>
+            <% }) %>
+            </ul>    
+        <% } %>
+    <% } %> 
+    <% if (ce_lu.length !== 0) { %>
+        <h<%= title_level+2 %>>Inhalter, op déi sech <a href="http://legilux.public.lu/eli/etat/leg/loi/2019/05/28/a373/jo" hreflang="fr">d'Gesetz vum 28. Mee 2019</a> net applizéieren</h<%= title_level+2 %>>
+        <% if (ce_lu.length == 1) { %>
+            <p class="technical-information accessibility-limitations exception"><%= ce_lu[0] %></p>
+        <% } else { %>
+            <ul><% ce_lu.forEach(function(e){ %>
+                <li class="technical-information accessibility-limitations exception"><%= e %></li>
+            <% }) %>
+            </ul>    
+        <% } %>
+    <% } %>                 
+    <h<%= title_level+1 %>>Virbereedung vun dëser Accessibilitéitserklärung</h<%= title_level+1 %>>
+    <p>
+        Dës Erklärung gouf den <span class="basic-information statement-created-date"><%= date_prepa.toLocaleDateString('de') %></span> erstallt.
+        D'Angaben an dëser Erklärung si korrekt a baséieren op enger effektiver Konformitéitsbewärtung 
+        <% if (sites.length == 0) { %>
+            <% if (apps.length == 0) { %> 
+                       
+            <% } else if (apps.length == 1) { %>
+                vun der mobiller Applikatioun
+            <% } else { %>
+                vun de mobillen Applikatiounen
+            <% } %>    
+        <% } else if (sites.length == 1) { %>
+            <% if (apps.length == 0) { %>
+                vum Internetsite 
+            <% } else if (apps.length == 1) { %> 
+                vum Internetsite a vun der mobiller Applikatioun           
+            <% } else { %>
+                vum Internetsite a vun de mobillen Applikatiounen
+            <% } %>     
+        <% } else { %>
+            <% if (apps.length == 0) { %>
+                vun den Internetsitten
+            <% } else if (apps.length == 1) { %> 
+                vun den Internetsitten an der mobiller Applikatioun           
+            <% } else { %>
+                vun den Internetsitten an den mobillen Applikatiounen
+            <% } %>  
+        <% } %>    
+        
+        mat den
+        <% if (sites.length != 0 ) { %>
+            am <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA 4.1</a>
+        <% } %>
+        <% if (sites.length != 0 && apps.length !=0) { %>
+            an
+        <% } %>
+        <% if (apps.length != 0 ) { %>
+            am <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">RAAM 1</a>
+        <% } %>          
+
+        fixéierten Ufuerderungen, wéi 
+        <% if (eval_type == 'auto') { %>
+            eng Eegen-Evaluatioun vum Organ "<%= name_lu %>".
+        <% } else { %>
+            eng Evaluatioun duerch e drëtt Organ: <%= thirdparty_name %>.
+        <% } %>
+        
+        <% if (date_renewal !== '') { %>
+            Déi lescht Reevaluatioun vun der Erklärung war den <span class="basic-information statement-renewal-date"><%= date_renewal %></span>. 
+        <% } %> 
+    </p>
+    <% if (renow) { %>
+        <h<%= title_level+2 %>>Kontrollprozess</h<%= title_level+2 %>>
+    <p>
+        Internetsitten, déi nom Prinzip vu Renow erstallt ginn, ginn an engem genereschen, zentraliséierte Kader an Architektur entwéckelt, woubäi d'Projektmanagementprozesser befollegt ginn a <a href="https://renow.public.lu/fr/checklists-renow.html">d'Renow-Checklëscht</a> agehale gëtt.
+        Fir d'Neutralitéit ze garantéieren, gi reegelméisseg Experte fir d'"Accessibilitéit" consultéiert, fir d'Konformitéit vum Internetsite oder neie Funktionalitéiten z'iwwerpréiwen.
+    </p>
+    <p>    
+        All Site gëtt a verschiddenen Etappen evaluéiert:
+    </p>
+        <ol>
+            <li>Wärend der Konzeptioun vun der Struktur vum Contenu.</li>
+            <li>Wärend der Realisatioun vum grapheschen a funktionelle Layout.</li>
+            <li>Kuerz ier datt d'Internetsäit online geet.</li>
+        </ol>
+        <p>Wann de Site bis online ass, ginn d'Kontrolle folgendermoossen duerchgefouert:</p>
+        <ul>
+            <li>bei all neiem Contenu iwwerpréift d'Redaktioun d'Accessibilitéit vum komplette Contenu ier datt en online geet;</li>
+            <li>all nei Funktionalitéit vum Site gëtt evaluéiert ier se online geet.</li>
+        </ul>
+        <p>Wärend den Evaluatioune gëtt de Site mat de wichtegste Screen Reader, mat Tablets, Handyen an um PC getest. Dëse gëtt zudeem mat verschiddene Webbrowser getest (Kompatibilitéit mat 2 Virleefer-Versioune vun der aktueller Versioun).</p>
+        <h<%= title_level+2 %>>Kompetenze vun de Bedeelegten</h<%= title_level+2 %>>
+        
+        <p>D'Aarbechtsprozeduren ëmfaassen d'Applikatioun vun den Internet-Direktive wärend den eenzele Phasen zur Realisatioun vun der Internetsäit. (Redaktioun, Management, Entwécklung).</p>
+        
+        <p>Eis Mataarbechter hunn dat néidegt Wëssen a Kompetenze fir dës Internet-Direktive korrekt z'applizéieren.</p>
+    <% } %>
+    
+    <h<%= title_level+1 %>>Feedback a Kontakt</h<%= title_level+1 %>>
+    <p class="basic-information feedback h-card">Sollt Dir e Problem am Bezuch mat der Accessibilitéit feststellen, biede mir Iech eis eng E-Mail un <a class="email u-email" href="mailto:<%= email %>"><%= email %></a> ze schécken: beschreift eis de Problem sou wéi déi concernéiert Internetsäit. Mir verflichten eis dozou, Iech bannent engem Mount z'äntweren. Fir de Problem laangfristeg ze léisen, gëtt d'Online-Verbesserung vum Problem a Relatioun mat der Accessibilitéit favoriséiert. Sollt dëst net méiglech sinn, gëtt Iech déi gewënschten Informatioun op Wonsch an engem accessibele Format geschéckt:</p>
+    <ul>
+        <li>schrëftlech an engem Dokument oder per E-Mail;</li>
+        <li>mëndlech an engem Gespréich oder per Telefon.</li>
+    </ul> 
+    <h<%= title_level+1 %>>Prozeduren fir sécherzestellen, dass d'Dispositiounen agehale ginn</h<%= title_level+1 %>> 
+    <p>
+        Am Fall wou d'Äntwert net zefriddestellend ass, hutt Dir och d'Méiglechkeet <a href="https://sip.gouvernement.lu">den Informatiouns- a Pressedéngscht (Service information et presse)</a>, dee fir d'Kontroll vun der Accessibilitéit zoustänneg ass, doriwwer z'informéieren, entweder iwwert den <a href="https://sip.gouvernement.lu/lb/support/reclamation-accessibilite.html">Online-Formulaire fir Reklamatiounen</a>, oder <a href="http://www.ombudsman.lu/">den Ombudsmann</a>, Mediateur vum Groussherzogtum Lëtzebuerg.
+    </p>
+    <hr />
+    <small>Dës Erklärung baséiert op deem an der <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32018D1523" hreflang="fr">der Implementéierungsdecisioun (EU) 2018/1523</a> definéiertem Virlag-Dokument. Dës Virlag gehéiert der Europäescher Unioun, a steet ënnert enger <a href="https://creativecommons.org/licenses/by/4.0/" lang="en" hreflang="en">Creative Commons Attribution 4.0 International</a> Lizenz.</small>
+    </div>
+    
