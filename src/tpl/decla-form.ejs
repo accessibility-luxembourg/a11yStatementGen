@@ -195,7 +195,8 @@ Si le site est disponible en plusieurs langues, il est recommandé de fournir la
     <% lang.forEach(function(e) { %>
         <div class="decla" id="decla-<%= e.code %>">
             <h3>Déclaration en <%= e.name %></h3>
-            <button class="clipboard">Copier <span class="extended">la déclaration en <%= e.name %></span> dans le presse-papier</button>
+            <button class="clipboard">Copier dans le presse-papier</button>
+            <button class="download">Télécharger au format html</button>
             <section id="decla-<%= e.code %>-result" class="decla-result"></section>
         </div>    
     <% }) %>

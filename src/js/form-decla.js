@@ -5,6 +5,20 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import formDataEntries from 'form-data-entries'
 
+// https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+  
+    element.style.display = 'none';
+    document.body.appendChild(element);
+  
+    element.click();
+  
+    document.body.removeChild(element);
+  }
+
 let supportedLang = lang.map(function(e) {return e.code})
 
 if (location.hash !== '') {
@@ -145,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 res[e.code] = ejs.render(window.tpl[e.code], params)
             });
             lang.forEach(e => {
-                if (params['lang_'+e.code] == e.code) { // langue sélectionnée 
+                if (params['lang_'+e.code] == e.code) { // language selected
                     document.getElementById('decla-'+e.code+'-result').innerHTML = res[e.code]
                     document.getElementById('decla-'+e.code).style.display = 'block'
                 } else {
@@ -181,9 +195,16 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     Array.from(document.querySelectorAll('.clipboard')).forEach(function(btn) {
         btn.addEventListener('click', function(e) {
-            copyTextToClipboard(btn.nextElementSibling.innerHTML);
+            copyTextToClipboard(btn.nextElementSibling.nextElementSibling.innerHTML);
         })
     })
+
+    Array.from(document.querySelectorAll('.download')).forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            download(btn.parentElement.getAttribute('id')+'.html', btn.nextElementSibling.innerHTML)
+        })
+    })    
+
     document.getElementById('back').addEventListener('click', function() {
         location.hash = 'form';
     })
