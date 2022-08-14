@@ -5,3 +5,4 @@ dist/*
 src/html/fr/*
 !src/html/fr/.keep
 .DS_Store
+todo.txt
