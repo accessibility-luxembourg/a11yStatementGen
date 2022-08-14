@@ -41,9 +41,9 @@ Here is the metadata structure which is currently implemented:
     - feedback h-card
         - email (1..1): email address to be contacted in case of accessibility issues
 - technical-information accessibility-limitations 
-        - non-compliant (0..n): list of non-compliance issues which will be fixed
-        - disproportionate-burden (0..n): list of non-conformity issues which cannot be solved because of a disproportionate burden
-        - exception (0..n): list of accessibility issues which are outside the scope of the law
+    - non-compliant (0..n): list of non-compliance issues which will be fixed
+    - disproportionate-burden (0..n): list of non-conformity issues which cannot be solved because of a disproportionate burden
+    - exception (0..n): list of accessibility issues which are outside the scope of the law
 
 The metadata structure is implemented via classes attributes in the html code of the generated accessibility statements.
 
