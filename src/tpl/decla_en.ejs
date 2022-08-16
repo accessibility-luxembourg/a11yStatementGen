@@ -154,7 +154,7 @@
     <h<%= title_level+1 %>>Preparation of this accessibility statement</h<%= title_level+1 %>>
     <p>
         This statement was prepared on <span class="basic-information statement-created-date"><%= date_prepa.toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric' }) %></span>.
-        The declarations contained in this statement are accurate and based on an effective conformity assessment 
+        The declarations contained in this statement are accurate and based on an actual evaluation 
         <% if (sites.length == 0) { %>
             <% if (apps.length == 0) { %> 
                        
@@ -181,7 +181,7 @@
             <% } %>  
         <% } %>    
         
-        with the requirements defined in 
+        compliance with the requirements defined in 
         <% if (sites.length != 0 ) { %>
             <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA 4.1</a>
         <% } %>
