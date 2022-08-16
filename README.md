@@ -3,6 +3,8 @@
 **a11yStatementGen** is an accessibility statement generator which has been developed to help public sector organisations in generating accessibility statements in Luxembourg. It is able to generate an accessibility statement in four languages: luxembourgish, french, german and english. One instance of this software is usually deployed at this address:
 https://accessibilite.public.lu/fr/tools/decla.html
 
+The [latest version of this tool is always available on netlify](https://a11y-statement-gen.netlify.app) (synced with the main branch).
+
 
 ## Installation
 
