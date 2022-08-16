@@ -3,7 +3,7 @@
 <h<%= title_level %>>Déclaration sur l'accessibilité</h<%= title_level %>>
 <% } %>
 <p>
-    L'organisme <span class="basic-information organization-name">"<%= name_fr %>"</span> s'engage à rendre 
+    L'organisme déclarant <span class="basic-information organization-name">"<%= name_fr %>"</span> s'engage à rendre 
     <% if (sites.length != 0 ) { %>
         <% if (sites.length == 1) { %>
             son site internet
@@ -33,7 +33,7 @@
     </ul>
     <% } %>
 <h<%= title_level+1 %>>Qu’est-ce que l’accessibilité numérique ?</h<%= title_level+1 %>>
-<p>Chacun doit pouvoir utiliser et consulter facilement les informations figurant sur un site web ou une application notamment les personnes présentant un handicap et/ou utilisant des logiciels d’assistance ou du matériel spécialisé (personnes aveugles, malvoyantes, ou souffrant d’un autre handicap).
+<p>Chacun doit pouvoir utiliser et consulter facilement les informations figurant sur un site web ou une application notamment les personnes présentant un handicap et/ou utilisant des logiciels d’assistance ou du matériel spécialisé (ex : handicaps visuels, auditifs, physiques, cognitifs, etc.).
 </p>
 <h<%= title_level+1 %>>État de conformité</h<%= title_level+1 %>>
 <p class="basic-information conformance-status <%= conformity %>">
@@ -77,9 +77,9 @@
         <% } %>
     <% } %>
     <% if (conformity == 'total') { %>
-        en <strong>totale conformité</strong> à la norme européenne <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf">EN 301 549</a> ainsi 
+        en <strong>totale conformité</strong> avec la norme européenne <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf">EN 301 549</a> ainsi 
         <% if (sites.length != 0 ) { %>
-            qu'au <a href="https://accessibilite.public.lu/fr/rgaa4.1/">référentiel général d’amélioration de l’accessibilité (RGAA) v4.1</a>
+            qu'au <a href="https://accessibilite.public.lu/fr/rgaa4.1/">Référentiel général d’amélioration de l’accessibilité web(RGAA) v4.1</a>
         <% } %>
         <% if (sites.length != 0 && apps.length !=0) { %>
             et
@@ -90,7 +90,7 @@
             <% } else { %>
                 au
             <% } %>
-            <a href="https://accessibilite.public.lu/fr/raam1/">référentiel d'évaluation de l'accessibilité des applications mobiles (RAAM) v1</a>
+            <a href="https://accessibilite.public.lu/fr/raam1/">Référentiel d'évaluation de l'accessibilité des applications mobiles (RAAM) v1</a>
         <% } %>        
         <% if (sites.length != 0 && apps.length !=0) { %>
             qui l'implémentent.
@@ -100,7 +100,7 @@
     <% } else if (conformity == 'partial') { %>
         en <strong>conformité partielle</strong> à la norme européenne <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf">EN 301 549</a> ainsi 
         <% if (sites.length != 0 ) { %>
-            qu'au <a href="https://accessibilite.public.lu/fr/rgaa4.1/">référentiel général d’amélioration de l’accessibilité (RGAA) v4.1</a>
+            qu'au <a href="https://accessibilite.public.lu/fr/rgaa4.1/">Référentiel général d’amélioration de l’accessibilité web(RGAA) v4.1</a>
         <% } %>
         <% if (sites.length != 0 && apps.length !=0) { %>
             et
@@ -111,7 +111,7 @@
             <% } else { %>
                 au
             <% } %>
-            <a href="https://accessibilite.public.lu/fr/raam1/">référentiel d'évaluation de l'accessibilité des applications mobiles (RAAM) v1</a>
+            <a href="https://accessibilite.public.lu/fr/raam1/">Référentiel d'évaluation de l'accessibilité des applications mobiles (RAAM) v1</a>
         <% } %>        
         <% if (sites.length != 0 && apps.length !=0) { %>
             qui l'implémentent,
@@ -122,7 +122,7 @@
     <% } else { %>
         <strong>pas en conformité</strong> avec à norme européenne <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf">EN 301 549</a> ainsi 
         <% if (sites.length != 0 ) { %>
-            qu'au <a href="https://accessibilite.public.lu/fr/rgaa4.1/">référentiel général d’amélioration de l’accessibilité (RGAA) v4.1</a>
+            qu'au <a href="https://accessibilite.public.lu/fr/rgaa4.1/">Référentiel général d’amélioration de l’accessibilité web(RGAA) v4.1</a>
         <% } %>
         <% if (sites.length != 0 && apps.length !=0) { %>
             et
@@ -133,7 +133,7 @@
             <% } else { %>
                 au
             <% } %>
-            <a href="https://accessibilite.public.lu/fr/raam1/">référentiel d'évaluation de l'accessibilité des applications mobiles (RAAM) v1</a>
+            <a href="https://accessibilite.public.lu/fr/raam1/">Référentiel d'évaluation de l'accessibilité des applications mobiles (RAAM) v1</a>
         <% } %>        
         <% if (sites.length != 0 && apps.length !=0) { %>
             qui l'implémentent.
@@ -261,13 +261,13 @@
 <% } %>
 
 <h<%= title_level+1 %>>Retour d'information et coordonnées de contact</h<%= title_level+1 %>>
-<p class="basic-information feedback h-card">Si vous constatez un défaut d’accessibilité, envoyez-nous un mail à <a class="email u-email" href="mailto:<%= email %>"><%= email %></a> : décrivez votre problème ainsi que la page concernée. Nous nous engageons à vous répondre par mail dans un délai de 1 mois au plus tard. Pour remédier au problème de manière durable et dans la mesure du raisonnable, la correction en ligne du défaut d’accessibilité sera privilégiée. Si cela ne peut être fait, l’information souhaitée vous sera transmise dans un format accessible selon vos souhaits :</p>
+<p class="basic-information feedback h-card">Si vous constatez un défaut d’accessibilité, envoyez-nous un courriel à <a class="email u-email" href="mailto:<%= email %>"><%= email %></a> : décrivez votre problème et indiquez-nous la page concernée. Nous nous engageons à vous répondre par courriel dans un délai d'un mois au plus tard. Pour remédier au problème de manière durable et dans la mesure du raisonnable, la correction en ligne du défaut d’accessibilité sera privilégiée. Si cela ne peut être fait, l’information souhaitée vous sera transmise dans un format accessible selon vos souhaits :</p>
 <ul>
-    <li>par écrit dans un document ou email ;</li>
+    <li>par écrit dans un document ou courriel ;</li>
     <li>à l’oral lors d'un entretien ou par téléphone.</li>
 </ul> 
 <h<%= title_level+1 %>>Procédure permettant d'assurer le respect des dispositions</h<%= title_level+1 %>> 
 <p>En cas de réponse non satisfaisante, vous avez également la possibilité d’en informer le <a href="https://sip.gouvernement.lu">Service information et presse</a>, organisme responsable du contrôle de l’accessibilité, via son <a href="https://sip.gouvernement.lu/fr/support/reclamation-accessibilite.html">formulaire de réclamation en ligne</a>, ou <a href="http://www.ombudsman.lu/">l’Ombudsman</a>, médiateur du Grand-Duché de Luxembourg. </p>
 <hr />
-<small>Cette déclaration est basée sur le modèle de document défini dans la <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32018D1523" hreflang="en">décision d'exécution (UE) 2018/1523</a>. Ce modèle est  © Union Européenne, 1998-2020 et est sous licence <a href="https://creativecommons.org/licenses/by/4.0/" lang="en" hreflang="en">Creative Commons Attribution 4.0 International licence</a>.</small>
+<small>La présente déclaration se base sur le modèle défini par la <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32018D1523" hreflang="en">décision d'exécution (UE) 2018/1523</a>. Ce modèle appartient à l’Union européenne et est protégé par la licence <a href="https://creativecommons.org/licenses/by/4.0/" lang="en" hreflang="en">Creative Commons Attribution 4.0 International</a>.</small>
 </div>

@@ -3,7 +3,7 @@
     <h<%= title_level %>>Accessibility Statement</h<%= title_level %>>
     <% } %>
     <p>
-        The organisation <span class="basic-information organization-name">"<%= name_en %>"</span> is committed to making its 
+        The body making the statement <span class="basic-information organization-name">"<%= name_en %>"</span> is committed to making its 
         <% if (sites.length != 0 ) { %>
             <% if (sites.length == 1) { %>
                 website
@@ -21,7 +21,7 @@
                 mobile applications
             <% } %>
         <% } %>
-        accessible, in accordance with the <a href="http://legilux.public.lu/eli/etat/leg/loi/2019/05/28/a373/jo" hreflang="fr">law of 28th May 2019</a> on the accessibility of websites and mobile applications of public sector bodies.    
+        accessible, in accordance with the <a href="http://legilux.public.lu/eli/etat/leg/loi/2019/05/28/a373/jo" hreflang="fr">law of 28 May 2019</a> on the accessibility of websites and mobile applications of public sector bodies.    
         This accessibility statement applies to:
         <% if (sites.concat(apps).length == 1) { %>
             <span class="basic-information website-name"><a href="<%= sites.concat(apps)[0] %>"><%= sites.concat(apps)[0] %></a></span></p>
@@ -73,27 +73,27 @@
             <strong>fully compliant</strong> with the European Standard <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf">EN 301 549</a><% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> and <% } %>
             
             <% if (sites.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA version 4.1</a>
+                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 and
             <% } %>
             <% if (apps.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">RAAM version 1</a>
+                <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">the Framework for Assessing the Accessibility of Mobile Applications (RAAM) version 1</a>
             <% } %>            
-            .
+            implementing it.
         <% } else if (conformity == 'partial') { %>
             <strong>partially compliant</strong> with the European Standard <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf">EN 301 549</a> 
             <% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> and <% } %>
             
             <% if (sites.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA version 4.1</a>
+                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 and
             <% } %>
             <% if (apps.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">RAAM version 1</a>
+                <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">the Framework for Assessing the Accessibility of Mobile Applications (RAAM) version 1</a>
             <% } %>            
             , due to the reasons listed below.
         <% } else { %>
@@ -101,13 +101,13 @@
             <% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> and <% } %>
             
             <% if (sites.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA version 4.1</a>
+                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 and
             <% } %>
             <% if (apps.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">RAAM version 1</a>
+                <a href="https://accessibilite.public.lu/fr/raam1/" hreflang="fr">the Framework for Assessing the Accessibility of Mobile Applications (RAAM) version 1</a>
             <% } %>            
             . The reasons for this non-compliance are listed below.
         <% } %>
@@ -141,7 +141,7 @@
         <% } %>            
     <% } %> 
     <% if (ce_en.length !== 0) { %>
-        <h<%= title_level+2 %>>Content is outside of the scope of the <a href="http://legilux.public.lu/eli/etat/leg/loi/2019/05/28/a373/jo" hreflang="fr">law of 28 May 2019</a></h<%= title_level+2 %>>
+        <h<%= title_level+2 %>>Content not within the scope of the <a href="http://legilux.public.lu/eli/etat/leg/loi/2019/05/28/a373/jo" hreflang="fr">law of 28 May 2019</a></h<%= title_level+2 %>>
         <% if (ce_en.length == 1) { %>
             <p class="technical-information accessibility-limitations exception"><%= ce_en[0] %></p>
         <% } else { %>
@@ -154,7 +154,7 @@
     <h<%= title_level+1 %>>Preparation of this accessibility statement</h<%= title_level+1 %>>
     <p>
         This statement was prepared on <span class="basic-information statement-created-date"><%= date_prepa.toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric' }) %></span>.
-        The statements contained in this declaration are accurate and based on an effective conformity assessment 
+        The declarations contained in this statement are accurate and based on an effective conformity assessment 
         <% if (sites.length == 0) { %>
             <% if (apps.length == 0) { %> 
                        
@@ -193,9 +193,9 @@
         <% } %>        
         , such as 
         <% if (eval_type == 'auto') { %>
-            a self-assessment conducted by "<%= name_en %>".
+            a self-assessment done by "<%= name_en %>".
         <% } else { %>
-            an assessment conducted by a third-party: <%= thirdparty_name %>.
+            an assessment carried out by a third-party: <%= thirdparty_name %>.
         <% } %>
         
         <% if (date_renewal !== '') { %>
@@ -229,16 +229,17 @@
         <p>Our employees have the knowledge and skills required to correctly apply the Internet guidelines.</p>
     <% } %>    
     <h<%= title_level+1 %>>Feedback and contact information</h<%= title_level+1 %>>
-    <p class="basic-information feedback h-card">If you notice a lack of accessibility, please send us an email to <a class="email u-email" href="mailto:<%= email %>"><%= email %></a>: please describe your problem and the relevant page.
-        We promise to get back to you within 1 month. In order fix the accessibility issue in a long lasting and reasonable way, the online correction of the accessibility problem will be privileged.
-    If this cannot be done, the desired information will be sent to you in an accessible format according to your wishes:</p>
+    <p class="basic-information feedback h-card">If you notice a lack of accessibility, send us an email to <a class="email u-email" href="mailto:<%= email %>"><%= email %></a>: describe your problem and specify the page on which it occured.
+        We commit to replying to you within 1 month. Within reasonable limits, the correction of the accessibility issue will preferably be carried out online such as to remedy the problem in a sustainable way.
+
+        Should this not be possible, the information you requested can be made available to you in an accessible format of your choice:</p>
     <ul>
-        <li>in written form through a document or via email;</li>
-        <li>orally in an interview or over the phone.</li>
+        <li>in writing in a document or email;</li>
+        <li>orally in an interview or by phone.</li>
     </ul> 
     <h<%= title_level+1 %>>Enforcement procedure</h<%= title_level+1 %>> 
-    <p>In the event of an unsatisfactory response, you have the option of informing the <a href="https://sip.gouvernement.lu/en.html">Information and Press Service</a>, which is in charge of the verification of accessibility, via its <a href="https://sip.gouvernement.lu/en/support/reclamation-accessibilite.html">online contact form</a>, as well as the <a href="http://www.ombudsman.lu/" hreflang="fr">Ombudsman</a>, mediator of the Grand Duchy of Luxembourg.</p>
+    <p>Should the reply be unsatisfactory, you also have the possibility of informing the <a href="https://sip.gouvernement.lu/en.html">Information and Press Service</a>, the body responsible for supervising accessibility, via its <a href="https://sip.gouvernement.lu/en/support/reclamation-accessibilite.html">online complaint form</a> or the <a href="http://www.ombudsman.lu/" hreflang="fr">Ombudsperson</a>, the mediator of the Grand Duchy of Luxembourg.</p>
     <hr />
-    <small>This statement is based on the document template defined in the <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32018D1523" hreflang="en">implementing decision (EU) 2018/1523</a>. This template is © European Union, 1998-2020 and is available under the following license: <a href="https://creativecommons.org/licenses/by/4.0/"  hreflang="en">Creative Commons Attribution 4.0 International license</a>.</small>
+    <small>This statement is based on the model set out in the <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32018D1523" hreflang="en">Implementing Decision (EU) 2018/1523</a>. This model is owned by the European Union and licensed under a <a href="https://creativecommons.org/licenses/by/4.0/"  hreflang="en">Creative Commons Attribution 4.0 International license.</a></small>
     </div>
     
