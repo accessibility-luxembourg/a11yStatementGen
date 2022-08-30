@@ -49,6 +49,8 @@ Here is the metadata structure which is currently implemented:
 
 The metadata structure is implemented via classes attributes in the html code of the generated accessibility statements.
 
+This metadata can be crawled by this tool: [a11yStatementCrawler](https://github.com/accessibility-luxembourg/a11yStatementCrawler)
+
 ## Related projects
 
 This project is inspired by the [Accessibility Statement Generator](https://github.com/w3c/wai-statements) from the [WAI-Tools](https://www.w3.org/WAI/about/projects/wai-tools/) project, which did not support the simultaneous generation of statements in multiple languages, as needed by the multilingual luxembourgish context.
