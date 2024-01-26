@@ -79,7 +79,7 @@
         <% if (conformity == 'total') { %>
             <strong>komplett konform</strong> mat der europäescher Norm <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf" hreflang="en">EN 301 549</a><% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> souwéi <% } %>
             <% if (sites.length != 0 ) { %>
-               mam <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">Generelle Referenzwierk fir d’Verbesserung vun der Web-Accessibilitéit (RGAA) v4.1</a>
+               mam <a href="https://accessibilite.public.lu/fr/rgaa4.1.2/" hreflang="fr">Generelle Referenzwierk fir d’Verbesserung vun der Web-Accessibilitéit (RGAA) v4.1.2</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 a
@@ -95,7 +95,7 @@
         <% } else if (conformity == 'partial') { %>
             <strong>deelweis konform</strong> mat der europäescher Norm <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf" hreflang="en">EN 301 549</a><% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> souwéi <% } %>
             <% if (sites.length != 0 ) { %>
-               mam <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">Generelle Referenzwierk fir d’Verbesserung vun der Web-Accessibilitéit (RGAA) v4.1</a>
+               mam <a href="https://accessibilite.public.lu/fr/rgaa4.1.2/" hreflang="fr">Generelle Referenzwierk fir d’Verbesserung vun der Web-Accessibilitéit (RGAA) v4.1.2</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 a
@@ -112,7 +112,7 @@
         <% } else { %>
             <strong>net konform</strong> mat der europäescher Norm <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf" hreflang="en">EN 301 549</a><% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> souwéi <% } %>
             <% if (sites.length != 0 ) { %>
-               mam <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">Generelle Referenzwierk fir d’Verbesserung vun der Web-Accessibilitéit (RGAA) v4.1</a>
+               mam <a href="https://accessibilite.public.lu/fr/rgaa4.1.2/" hreflang="fr">Generelle Referenzwierk fir d’Verbesserung vun der Web-Accessibilitéit (RGAA) v4.1.2</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 a
@@ -165,7 +165,11 @@
             <% }) %>
             </ul>    
         <% } %>
-    <% } %>                 
+    <% } %>
+    <% if (access_features_lu !== "") { %>
+        <h<%= title_level+1 %>>Accessibilitéitsfunktiounen</h<%= title_level+1 %>>
+        <p class="technical-information accessibility-features"><%= access_features_lu %></p>
+        <% } %>                      
     <h<%= title_level+1 %>>Virbereedung vun dëser Accessibilitéitsdeklaratioun</h<%= title_level+1 %>>
     <p>
         Dës Deklaratioun gouf de(n) <span class="basic-information statement-created-date"><%= date_prepa.toLocaleDateString('de') %></span> erstallt.
@@ -198,7 +202,7 @@
         
         mat den Ufuerderungen, déi
         <% if (sites.length != 0 ) { %>
-            am <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA 4.1</a>
+            am <a href="https://accessibilite.public.lu/fr/rgaa4.1.2/" hreflang="fr">RGAA 4.1.2</a>
         <% } %>
         <% if (sites.length != 0 && apps.length !=0) { %>
             an

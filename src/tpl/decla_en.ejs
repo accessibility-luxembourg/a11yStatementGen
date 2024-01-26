@@ -73,7 +73,7 @@
             <strong>fully compliant</strong> with the European Standard <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf">EN 301 549</a><% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> and <% } %>
             
             <% if (sites.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1</a>
+                <a href="https://accessibilite.public.lu/fr/rgaa4.1.2/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1.2</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 and
@@ -87,7 +87,7 @@
             <% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> and <% } %>
             
             <% if (sites.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1</a>
+                <a href="https://accessibilite.public.lu/fr/rgaa4.1.2/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1.2</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 and
@@ -101,7 +101,7 @@
             <% if (sites.length != 0 && apps.length !=0) { %>,<% } else { %> and <% } %>
             
             <% if (sites.length != 0 ) { %>
-                <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1</a>
+                <a href="https://accessibilite.public.lu/fr/rgaa4.1.2/" hreflang="fr">the General Framework for Improving Web-Accessibility (RGAA) version 4.1.2</a>
             <% } %>
             <% if (sites.length != 0 && apps.length !=0) { %>
                 and
@@ -150,7 +150,11 @@
             <% }) %>
             </ul>
         <% } %>   
-    <% } %>                 
+    <% } %>
+    <% if (access_features_en !== "") { %>
+    <h<%= title_level+1 %>>Accessibility features</h<%= title_level+1 %>>
+    <p class="technical-information accessibility-features"><%= access_features_en %></p>
+    <% } %>                     
     <h<%= title_level+1 %>>Preparation of this accessibility statement</h<%= title_level+1 %>>
     <p>
         This statement was prepared on <span class="basic-information statement-created-date"><%= date_prepa.toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric' }) %></span>.
@@ -183,7 +187,7 @@
         
         compliance with the requirements defined in 
         <% if (sites.length != 0 ) { %>
-            <a href="https://accessibilite.public.lu/fr/rgaa4.1/" hreflang="fr">RGAA 4.1</a>
+            <a href="https://accessibilite.public.lu/fr/rgaa4.1.2/" hreflang="fr">RGAA 4.1.2</a>
         <% } %>
         <% if (sites.length != 0 && apps.length !=0) { %>
             and
