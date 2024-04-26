@@ -53,6 +53,16 @@ function multilineToArray(e) {
     return (e.length === 0)? Array(): e.replace('\r\n', '\n').split('\n')
 }
 
+function getStatementName(params) {
+    const name = (params.sites.length !== 0)?params.sites[0]:params.apps[0]
+    try {
+        const url = new URL(name)
+        return url.hostname
+    } catch (e) {
+        return name
+    }
+}
+
 function getParams() {
     let form = document.getElementById('decla')
 
@@ -254,6 +264,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 let params = getParams();
                 window.params = params;
                 let res = [];
+
+                document.getElementById('result').setAttribute('data-name', getStatementName(params));
     
                 lang.forEach(e => {
                     res[e.code] = ejs.render(window.tpl[e.code], params);
@@ -319,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     Array.from(document.querySelectorAll('.download')).forEach(function(btn) {
         btn.addEventListener('click', function(e) {
-            download(btn.parentElement.getAttribute('id')+'.html', btn.nextElementSibling.innerHTML)
+            download(btn.parentElement.getAttribute('id')+'-'+btn.parentElement.parentElement.getAttribute('data-name')+'.html', btn.nextElementSibling.innerHTML)
         })
     })    
 
