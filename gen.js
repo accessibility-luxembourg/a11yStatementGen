@@ -23,7 +23,7 @@ prefix = '../..'
 
 langs.forEach(lang => {
     // generate declaration form
-    let declaPayload = {langs: config[lang].declaLangs, prefix, tpl: []}
+    let declaPayload = {langs: config[lang].declaLangs, lang, prefix, tpl: []}
     config[lang].declaLangs.forEach(e => {
         declaPayload["tpl"][e.code] = fs.readFileSync('./src/tpl/decla_'+e.code+'.ejs')
     });
