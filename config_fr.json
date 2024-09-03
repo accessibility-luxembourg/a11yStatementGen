@@ -1,8 +1,8 @@
 {
-    "lang": [
+    "declaLangs": [
         {"name": "français", "code": "fr"},
         {"name": "allemand", "code": "de"},
         {"name": "anglais", "code": "en"},
-        {"name": "luxembourgeois", "code": "lu"}
+        {"name": "luxembourgeois", "code": "lb"}
     ]
 }

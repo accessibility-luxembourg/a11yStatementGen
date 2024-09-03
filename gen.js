@@ -1,11 +1,16 @@
 const fs = require('fs')
 const ejs = require('ejs')
-const config = require('./conf.json')
+const y18n = require('y18n')
 const outputPath = './src/html'
 
 
-function renderToFile(data, title, file, name, prefix) {
-    ejs.renderFile('./src/tpl/main.ejs', {data: data, title: title, file: file.replace(/\.\/src\/html/, ''), config: config, name: name, prefix: prefix}, function(err, str){
+const langs = ['fr', 'en']
+const config = {}
+config['fr'] = require('./config_fr.json')
+config['en'] = require('./config_en.json')
+
+function renderToFile(data, title, file, name, prefix, lang, __) {
+    ejs.renderFile('./src/tpl/main.ejs', {data: data, title: title, lang: lang, file: file.replace(/\.\/src\/html/, ''), config: config, name: name, prefix: prefix, '__': __}, function(err, str){
         if (err !== null) {
             console.log(err)
         }
@@ -15,13 +20,20 @@ function renderToFile(data, title, file, name, prefix) {
 
 // generate declaration form
 prefix = '../..'
-let declaPayload = {lang: config.lang, prefix: prefix, tpl: []};
-config.lang.forEach(e => {
-    declaPayload["tpl"][e.code] = fs.readFileSync('./src/tpl/decla_'+e.code+'.ejs')
-});
-ejs.renderFile('./src/tpl/decla-form.ejs',declaPayload, function(err, str) {
-    if (err !== null) {
-        console.log(err)
-    }
-    renderToFile(str, "Créez votre déclaration", outputPath+"/fr/index.html", "decla", prefix)
+
+langs.forEach(lang => {
+    // generate declaration form
+    let declaPayload = {langs: config[lang].declaLangs, prefix, tpl: []}
+    config[lang].declaLangs.forEach(e => {
+        declaPayload["tpl"][e.code] = fs.readFileSync('./src/tpl/decla_'+e.code+'.ejs')
+    });
+    const __ = y18n({locale: lang, directory: './locales'}).__;
+    declaPayload['__'] = __
+    ejs.renderFile('./src/tpl/decla-form.ejs',declaPayload, function(err, str) {
+        if (err !== null) {
+            console.log(err)
+        }
+        renderToFile(str, __("Create your statement"), outputPath+"/"+lang+"/index.html", "decla", prefix, lang, __)
+    })    
 })
+

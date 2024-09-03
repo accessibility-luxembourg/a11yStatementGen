@@ -6,7 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="<%= prefix %>/css/main.scss" media="screen" />
 </head>
-<body> 
+<body>
+  <header>
+    <ul class="menu-lang">
+      <li>
+        <% if (lang === "fr") { %>
+          <p><span class="sr-only">Version française - </span>FR</p>
+        <% } else { %>
+          <a title="Version française - FR" lang="fr" hreflang="fr" href="../fr/index.html"><span class="sr-only">Version française - </span>FR</a>
+        <% } %>
+      </li>
+      <li>
+        <% if (lang === "en") { %>
+          <p><span class="sr-only">English version - </span>EN</p>
+        <% } else { %>
+          <a title="English version - EN" lang="en" hreflang="en" href="../en/index.html"><span class="sr-only">English version - </span>EN</a>
+        <% } %>
+      </li>
+    </ul>
+  </header> 
     <main role="main" id="main" class="main">
       <div id="contenu" class="container main-container"> 
         <h2><%= title %></h2>

@@ -67,7 +67,45 @@ form#decla p#errorPanel {
   background-position: center left 15px;
 }
 
+header ul.menu-lang {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
 
+header ul.menu-lang li p {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header ul.menu-lang li a {
+  width: 2rem;
+  height: 2rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; 
+}
 
 
 
