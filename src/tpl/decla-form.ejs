@@ -4,8 +4,9 @@
         window.tpl['<%= e.code %>'] = `<%- tpl[e.code] %>`
     <% }) %>
 </script>
-<script src="<%= prefix %>/js/form-decla.js"></script>
-<% const urlNoscript = `${prefix}/html/${lang}/files/template-decla-${lang}.docx`; %>
+<script src="<%= prefix %>/js/ejs.min.js"></script>
+<script type="module" src="<%= prefix %>/js/form-decla.js"></script>
+<% const urlNoscript = `${prefix}/${lang}/files/template-decla-${lang}.docx`; %>
 <noscript class="alert alert-danger"><%- __`Please note: this form requires JavaScript to function correctly. If you are unable to activate JavaScript, we also offer a <a href="${urlNoscript}">statement template in Word format</a> (28 KB).` %></noscript>
 
 <div id="form">
@@ -33,7 +34,7 @@
         <% langs.forEach(l => { %>  
               <div class="form-group" data-lang="<%= l.code %>">
                 <label for="name_<%= l.code %>"><%= __("Organisation name") + __("in") +__(l.name) %> <span class="symbol-required">* </span></label>
-                <input type="text" class="form-control" id="name_<%= l.code %>" name="name_<%= l.code %>" required="true">
+                <input type="text" class="form-control" id="name_<%= l.code %>" name="name_<%= l.code %>" required>
             </div>          
         <% }) %>                     
     </fieldset>
@@ -42,11 +43,11 @@
         <legend><%= __("Purpose(s) of the statement") %> <span class="symbol-required">*</span> (<%= __("fill in at least one of the following two fields") %>)</legend>
         <div class="form-group">
             <label for="sites"><%= __("URLs of sites to be declared") %> (<%= __("one per line") %>, <%- __("ex:") %> https://www.gouvernement.lu)</label>
-            <textarea id="sites" rows="5" class="form-control" name="sites" required></textarea>
+            <textarea id="sites" rows="5" class="form-control" name="sites"></textarea>
         </div>
         <div class="form-group">
             <label for="apps"><%= __("URLs of apps to be declared") %> (<%= __("one per line") %>, <%= __("App URLs on the Apple and Google stores") %>)</label>
-            <textarea id="apps" rows="5" class="form-control" name="apps" required></textarea>
+            <textarea id="apps" rows="5" class="form-control" name="apps"></textarea>
         </div>
     </fieldset>
 
@@ -59,21 +60,20 @@
             <input type="radio" id="partial" name="conformity" value="partial" checked class="form-check-input" aria-describedby="help-partial"><label for="partial" class="form-check-label"><%= __("Partial compliance") %></label>
         </div>
         <div class="form-check">
-            <input type="radio" id="none" name="conformity" value="none" class="form-check-input"><label for="none" class="form-check-label" aria-describedby="help-none"><%= __("Non-compliance") %></label>
+            <input type="radio" id="none" name="conformity" value="none" class="form-check-input" aria-describedby="help-none"><label for="none" class="form-check-label"><%= __("Non-compliance") %></label>
         </div>
         <p class="form-text text-muted"><small><%= __("The compliance status is assessed by a compliance audit.") %></small></p>
-            <ul>
-                <li id="help-total" class="text-muted">
-                    <small><%= __("Select \"Full compliance\" only if the level of compliance following the audit is 100%.") %></small>    
-                </li>
-                <li id="help-partial" class="text-muted">
-                    <small><%= __("Select \"Partial compliance\" if the level of compliance following the audit is between 50% and 100%.") %></small>
-                </li>
-                <li id="help-none" class="text-muted">
-                    <small><%= __("Select \"Non-compliant\" if a compliance audit has not yet been carried out or if the level of compliance following the audit is less than 50%.") %></small>
-                </li>
-            </ul>
-        </p>                
+        <ul>
+            <li id="help-total" class="text-muted">
+                <small><%= __("Select \"Full compliance\" only if the level of compliance following the audit is 100%.") %></small>    
+            </li>
+            <li id="help-partial" class="text-muted">
+                <small><%= __("Select \"Partial compliance\" if the level of compliance following the audit is between 50% and 100%.") %></small>
+            </li>
+            <li id="help-none" class="text-muted">
+                <small><%= __("Select \"Non-compliant\" if a compliance audit has not yet been carried out or if the level of compliance following the audit is less than 50%.") %></small>
+            </li>
+        </ul>               
     </fieldset>
     <fieldset class="form-group" id="features-access">
         <legend><%= __("Accessibility features") %></legend>         
@@ -187,7 +187,7 @@
     <div id="hierarchie">
         <h4><%= __("Heading hierarchy for your declaration") %></h4> 
         <div class="form-group">
-            <input type="checkbox" name="main_title" id="main_title" > <label for="main_title"><%= __("Add a title to your statement") %></label>
+            <input type="checkbox" name="main_title" id="main_title" aria-describedby="help-main_title"> <label for="main_title"><%= __("Add a title to your statement") %></label>
             <p id="help-main_title" class="form-text text-muted">
             <small>
                 <%- __("Using this option, you can add a title at the beginning of your declaration (e.g. <code>&lt;h1&gt; Accessibility statement&lt;/h1&gt;</code>), for example if your CMS (content management system) does not manage this title itself.") %>
@@ -196,7 +196,7 @@
         </div>    
         <div class="form-group">
             <label for="title_level"><%= __("Initial heading level") %></label>
-            <select name="title_level" id="title_level">
+            <select name="title_level" id="title_level" aria-describedby="help-title_hierarchy">
                 <option value="1">h1</option>
                 <option value="2" selected="selected">h2</option>
                 <option value="3">h3</option>
@@ -211,7 +211,7 @@
     </div>    
 
     <button type="button" id="decla_btn" class="btn btn-primary"><%= __("Create your statement") %></button>
-    <p id="errorPanel" role="alert"></p>
+    <div id="errorPanel" role="alert"></div>
 </form>
 </div>
 
@@ -219,15 +219,15 @@
 <div id="result">
     <p class="alert alert-success"><%- __("The different versions of your statement were successfully created.<br />You can change your input using the button below or the \"back\" button on your browser.<br />For each version of your statement, you can copy and paste their content into your CMS.") %></p>
     <div class="alert alert-warning">
-        <p class="alert-content"><%- __("<strong>Please note!</strong> Once your statement has been published, you have one month to inform the SIP of this publication. Send us the URL of your statement by e-mail to <a href=\"mailto:accessibilite@sip.etat.lu\">accessibilite@sip.etat.lu</a>. Thank you!") %></p>
+        <p class="alert-content"><%- __("<strong>Please note!</strong> Once your statement has been published, you have one month to inform the SIP of this publication. Send us the URL of your statement by e-mail to <a href=\"mailto:accessibilite@sip.etat.lu\">accessibilite<wbr>@sip.etat.lu</a>. Thank you!") %></p>
     </div>
     <button id="back"><%= __("Edit your input") %></button>
 
     <% langs.forEach(function(e) { %>
         <div class="decla" id="decla-<%= e.code %>">
-            <h3><%= __("Statement") + __("in") + e.name %></h3>
-            <button class="clipboard"><%= __("Copy to clipboard") %></button>
-            <button class="download"><%= __("Download HTML") %></button>
+            <h3 id="decla-<%= e.code %>-title"><%= __("Statement") + __("in") + e.name %></h3>
+            <button id="copy-<%= e.code %>" aria-labelledby="copy-<%= e.code %> decla-<%= e.code %>-title" class="clipboard"><%= __("Copy to clipboard") %></button>
+            <button id="download-<%= e.code %>" aria-labelledby="download-<%= e.code %> decla-<%= e.code %>-title" class="download"><%= __("Download HTML") %></button>
             <section id="decla-<%= e.code %>-result" class="decla-result"></section>
         </div>    
     <% }) %>

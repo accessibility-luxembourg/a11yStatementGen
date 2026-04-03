@@ -2,9 +2,5 @@ node_modules
 dist/*
 !dist/.keep
 .cache
-src/html/fr/*
-!src/html/fr/.keep
-src/html/en/*
-!src/html/en/.keep
 .DS_Store
 todo.txt

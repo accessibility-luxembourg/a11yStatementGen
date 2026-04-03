@@ -1,8 +1,4 @@
-import ejs from 'ejs'
 import { copyTextToClipboard } from './clipboard.js';
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-import formDataEntries from 'form-data-entries'
 
 const lang = [
     {"name": "français", "code": "fr"},
@@ -11,7 +7,7 @@ const lang = [
     {"name": "luxembourgeois", "code": "lb"}
 ]
 
-const pgLang = document.documentElement.lang;
+const pgLang = document.documentElement.lang.substring(0,2);
 
 let errorMsg = [];
 errorMsg["fr"] = {
@@ -23,22 +19,22 @@ errorMsg["fr"] = {
     erField : "Veuillez compléter ce champ",
     erEmail : "Veuillez renseigner une adresse e-mail valide\n (exemple : jean.reuter@etat.lu)",
     erDate : "Veuillez indiquer une date valide au format jj/mm/aaaa\n (exemple : 20/12/2023)",
-    erNext : "Veuillez compléter ce champ et/ou le champ ci-dessous",
-    erPrev : "Veuillez compléter ce champ et/ou le champ ci-dessus",
+    erNext : "Veuillez compléter ce champ et/ou le champ « URL des apps à déclarer »",
+    erPrev : "Veuillez compléter ce champ et/ou le champ « URL des sites à déclarer »",
     erGlobal : "Des erreurs ont été détectées dans le formulaire, le focus est repositionné dans le premier champ posant problème."
 }
 
 errorMsg["en"] = {
     pgTitle : "Your statement - Digital accessibility portal",
     altPgTitle : "Create your statement - Digital accessibility portal",
-    mainTitle : "Votre déclaration",
+    mainTitle : "Your statement",
     altMainTitle : "Create your statement",
     erLang : "Please select at least one language",
     erField : "Please fill in this field",
     erEmail : "Please fill in a valid e-mail address\n (example: jean.reuter@etat.lu)",
     erDate : "Please enter a valid date in dd/mm/yyyy format\n (example: 20/12/2023)",
-    erNext : "Please complete this field and/or the field below",
-    erPrev : "Please complete this field and/or the field above",
+    erNext : "Please complete this field and/or the field “URLs of apps to be declared”",
+    erPrev : "Please complete this field and/or the field “URLs of sites to be declared”",
     erGlobal : "Errors have been detected in the form, and the focus is repositioned to the first field with a problem."
 }
 
@@ -84,7 +80,7 @@ if (location.hash !== '') {
     location.hash = ''
 }
 
-document.querySelector('#contenu>h2').setAttribute('tabindex', '-1')
+document.querySelector('#contenu>h1').setAttribute('tabindex', '-1')
 
 function multilineToArray(e) {
     return (e.length === 0)? Array(): e.replace('\r\n', '\n').split('\n')
@@ -93,9 +89,8 @@ function multilineToArray(e) {
 function getParams() {
     let form = document.getElementById('decla')
 
-    // as always, there is an elegant way of doing things, and there is the polyfill way for IE11
     let params = {}
-    for (const [key, val] of formDataEntries(form)) {
+    for (const [key, val] of new FormData(form).entries()) {
           params[key] = val
     }
     params.sites = multilineToArray(params.sites)
@@ -175,14 +170,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
             document.getElementById('form').style['display'] = 'none'
             document.getElementById('result').style['display'] = 'block'
             document.title = errorMsg[pgLang].pgTitle
-            document.querySelector('#contenu>h2').innerHTML = errorMsg[pgLang].mainTitle
-            document.querySelector('#contenu>h2').focus()
+            document.querySelector('#contenu>h1').innerHTML = errorMsg[pgLang].mainTitle
+            document.querySelector('#contenu>h1').focus()
         } else {
             document.getElementById('form').style['display'] = 'block'
             document.getElementById('result').style['display'] = 'none'
             document.title = errorMsg[pgLang].altPgTitle
-            document.querySelector('#contenu>h2').innerHTML = errorMsg[pgLang].altMainTitle
-            document.querySelector('#contenu>h2').focus()
+            document.querySelector('#contenu>h1').innerHTML = errorMsg[pgLang].altMainTitle
+            document.querySelector('#contenu>h1').focus()
         }
         // scroll back to top of the page
         document.body.scrollTop = 0; // For Safari
@@ -226,8 +221,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
             const eval_type       = document.querySelector("[name='eval_type']:checked").value;
             const sitesField      = document.getElementById('sites');
             const appsField       = document.getElementById('apps');
-            sitesField.required   = true;
-            appsField.required    = true;
 
             let fields            = [sitesField, appsField, dateField, renewalField, emailField];
             let checkLang         = false;
@@ -281,22 +274,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 }                
             }
 
-            if (sitesField.validity.valueMissing && appsField.validity.valueMissing) {
+            if (sitesField.value === '' && appsField.value === '') {
                 errorMessage(sitesField, errorMsg[pgLang].erNext);
                 errorMessage(appsField, errorMsg[pgLang].erPrev);
             }
 
-            if (!sitesField.validity.valueMissing) {
-                appsField.required = false;
-            }
-
-            if (!appsField.validity.valueMissing) {
-                sitesField.required = false;
-            }
-
             document.getElementById('lang_fr').setCustomValidity(document.querySelectorAll(".form-lang-input:checked").length == 0  ? 'Sélectionnez au moins une case à cocher' : '');
             errorPanel.innerHTML = "";
-            errorPanel.style.display = "none";
 
             // if ok, submit it
             const okToSubmit = fields.map(e => e.reportValidity()).reduce((a,b) => a && b, true);
@@ -319,22 +303,21 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 });
                 location.hash = 'result';
             } else {
-                errorPanel.style.display = "block";
-                window.setTimeout(function () {
-                    errorPanel.innerHTML = errorMsg[pgLang].erGlobal;
-                    if (!checkLang) {
-                        document.getElementById('lang_fr').focus();
-                        document.getElementById('lang_fr').parentElement.parentElement.before(errorPanel);
-                    } else  {
-                        for (let f = 0; f < fields.length; f++) {
-                            if (!fields[f].reportValidity()) {
-                                fields[f].focus();
-                                fields[f].parentElement.parentElement.before(errorPanel);
-                                break;
-                            }
+                if (!checkLang) {
+                    document.getElementById('lang_fr').focus();
+                    document.getElementById('lang_fr').parentElement.parentElement.before(errorPanel);
+                } else  {
+                    for (let f = 0; f < fields.length; f++) {
+                        if (!fields[f].reportValidity()) {
+                            fields[f].focus();
+                            fields[f].parentElement.parentElement.before(errorPanel);
+                            break;
                         }
                     }
-                }, 10);
+                }
+                window.setTimeout(function () {
+                    errorPanel.innerHTML = '<p class="errorPanel" role="none">' + errorMsg[pgLang].erGlobal + '</p>';
+                }, 200);
             }
         })
     }

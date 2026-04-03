@@ -1,7 +1,7 @@
 const fs = require('fs')
 const ejs = require('ejs')
 const y18n = require('y18n')
-const outputPath = './src/html'
+const outputPath = './dist'
 
 
 const langs = ['fr', 'en']
